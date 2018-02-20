@@ -1,0 +1,27 @@
+<svg 
+    version="1.2"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    width="50px" height="49px">
+<!-- right -->
+<path fill-rule="evenodd" fill="rgb(0,0,0)" transform="translate(40,0)"
+    d="M0.000,-0.000 H10
+    V48.2000 
+    C5.092751196, 45.98413876 2.533851675, 44.42966507 0.000, 42.91866029 
+    V409.5777512
+    Z"/>
+<!-- middle -->
+<path fill-rule="evenodd" fill="rgb(0,0,0)" transform="translate(20,0)"
+    d="M-0.000, -0.000 H10
+    V36.31578947
+    C3.495933014, 31.23141148 3.208899522, 30.87110048 -0.000, 27.72727273
+    V26.25004785
+    Z" />
+<!-- left -->
+<path fill-rule="evenodd" fill="rgb(0,0,0)" transform="translate(0,0)"
+    d="M0.000, -0.000 H10
+    V16.72248804
+    C4.630598086, 9.860909091 1.221124402, 3.571411483 0.000, 1.004784689 
+    V0.3245454545
+    Z" />
+</svg>
