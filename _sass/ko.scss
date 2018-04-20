@@ -1,83 +1,63 @@
 @import url("http://fonts.googleapis.com/css?family=Inder");
 @import url("http://fonts.googleapis.com/css?family=Droid+Sans+Mono");
 
-
-
 * {
     margin: 0;
     padding: 0;
     font-size: 1em;
 }
-
 body {
     width: 100%;
     height: 100%;
     font-family: 'Inder', sans-serif;
 }
 
-
 @mixin ko($background, $contrast) {
+    $wings-width: 10vw;
+
     background-color: $background;
     position: relative;
+    padding: 2vh 2vw;
     width: 96vw;
-    height: 96vh;
-    padding: 1vh 1vw;
-    margin: 0;
-    margin-bottom: 8vh;
+    min-height: 96vh;
+    display: flex;
+    flex-direction: column;
 
-    >header,
-    >main,
-    >.main,
-    >footer {
-        width: 95vw;
-        border-right: 1vw $contrast solid;
+    %layout-border-right { border-right: 1vw $contrast solid; }
+    %layout-header { height: 3vw; }
+    %layout-footer { height: 8vw; }
+
+    %layout-background {
+        background: repeating-linear-gradient(
+            90deg, 
+            $contrast, 
+            $contrast 2vw, 
+            $background 2vw, 
+            $background 4vw
+            );
     }
 
-    >header {
-        height: 3vw;
-        border-top: 1vw $contrast solid;
-    }
-    >header>* {
-        margin-right: 3vw;
-        float: left;
-    }
-
-    >main,
-    >.main {
-        width: 85vw;
-        padding-left: 10vw;
-        min-height: 83vh;
-        background: repeating-linear-gradient(90deg, $contrast, $contrast 2vw, $background 2vw, $background 4vw);
-        background-size: 10vw 100%;
-        background-repeat: no-repeat;
-        background-position: top left;
-    }
-
-    >footer,
-    >footer::before {
-        height: 8vw;
-        margin-bottom: 1vw;
-
-    }
-
-    >header::before,
-    >footer::before {
+    %layout-before-box {
         content: ' ';
         display: block;
-        width: 10vw;
-        background: repeating-linear-gradient(90deg, $contrast, $contrast 2vw, $background 2vw, $background 4vw);
         float: left;
+        width: $wings-width;
+    }
+
+    >header { 
+        @extend %layout-border-right;
+        @extend %layout-header;
+        border-top: 1vw $contrast solid;
     }
 
     >header::before {
-        height: 3vw;
+        @extend %layout-background; 
+        @extend %layout-before-box;
+        @extend %layout-header;
     }
 
-    >footer::before {
-        clip-path: polygon(0% 0%,  20% 31%,  40% 54%,  40% 54%,  60% 71%,  80% 84%,  100% 95%,  100% 0%);
-    }
-
-    header::after {
+    > header::after {
+        @extend %layout-header;
         content: ' ';
         display: block;
         width: 2vw;
@@ -86,15 +66,59 @@ body {
         border-radius: 50%;
         background-origin: content-box;
         float: right;
-        margin-top: 1vw;
+        margin-top: 1vh;
         margin-right: 1vw;
     }
+
+    >main {
+        @extend %layout-background; 
+        @extend %layout-border-right;
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: $wings-width 100%;
+        flex: 1;
+        padding-left: $wings-width + 1vw;
+
+    }
+
+    >footer {
+        @extend %layout-border-right;
+        @extend %layout-footer;
+    }
+    >footer::before {
+        @extend %layout-background; 
+        @extend %layout-before-box;
+        @extend %layout-footer;
+        clip-path: polygon(0% 0%,  20% 31%,  40% 54%,  40% 54%,  60% 71%,  80% 84%,  100% 95%,  100% 0%);
+    }
+
+    >header>nav {
+        display: inline-block;
+        margin-top: 0.4em;
+        margin-left: 0.8vw;
+
+        a.page-link {
+            font-size: 1.4em;
+            text-decoration: none;
+            margin-right: 1em;
+            padding: 0 0.1em;
+            color: $contrast;
+            background-color: $background;
+        }
+        a.page-link:hover {
+            background: $contrast;
+            color: $background;
+        }
+
+    }
+
 }
 
 .ko {
-   @include ko(#fff, #000); 
+ @include ko(#fff, #000); 
 }
 
 pre {
   font-family: 'Droid Sans Mono', Monaco, "lucida console", monospaced;
 }
+
