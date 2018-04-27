@@ -109,8 +109,19 @@ body {
             background: $contrast;
             color: $background;
         }
-
     }
+
+    h1 {
+        font-size: 2em;
+        padding-bottom: 0.8em;
+    }
+
+    h2 {
+        font-size: 1.7em;
+        padding-bottom: 0.6em;
+        font-style: normal; 
+    }
+
 
 }
 
@@ -121,4 +132,3 @@ body {
 pre {
   font-family: 'Droid Sans Mono', Monaco, "lucida console", monospaced;
 }
-
